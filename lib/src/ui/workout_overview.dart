@@ -4,7 +4,7 @@ import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "common_widgets/lift_card_minimal.dart";
 import "common_widgets/rounded_button.dart";
 
-class WorkoutPage extends StatelessWidget {
+class WorkoutOverviewPage extends StatelessWidget {
   final String title = "Chest, Back, Biceps, Legs";
   final int totalExerciseCount = 8;
   final String estimatedTime = "15m 30s";

@@ -1,13 +1,15 @@
 import "package:flutter/material.dart";
 
 import "src/ui/home.dart";
-import "src/ui/workout_page.dart";
+import "src/ui/workout_overview.dart";
+import "src/ui/workouts_page.dart";
 import "theme.dart";
 
 class Routes {
   final routes = <String, WidgetBuilder>{
     "/home": (BuildContext context) => Home(),
-    "/workout": (BuildContext context) => WorkoutPage(),
+    "/workout_overview": (BuildContext context) => WorkoutOverviewPage(),
+    "/workouts": (BuildContext context) => WorkoutsPage(),
   };
 
   final theme = buildTheme();
