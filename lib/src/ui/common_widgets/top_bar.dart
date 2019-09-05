@@ -29,7 +29,7 @@ class TopBar extends StatelessWidget {
             icon: Icon(FontAwesomeIcons.gripLines),
             color: Colors.black,
             tooltip: "Main menu",
-            onPressed: () => {},
+            onPressed: () => Scaffold.of(context).openEndDrawer(),
           ),
         ]),
       ),

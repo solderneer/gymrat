@@ -17,7 +17,7 @@ class Routes {
       title: "Beep",
       theme: theme,
       routes: routes,
-      home: WorkoutPage(),
+      home: Home(),
     ));
   }
 }

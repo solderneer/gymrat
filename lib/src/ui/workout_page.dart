@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 
 import "common_widgets/lift_card_minimal.dart";
+import "common_widgets/rounded_button.dart";
 
 class WorkoutPage extends StatelessWidget {
   final String title = "Chest, Back, Biceps, Legs";
@@ -40,6 +41,13 @@ class WorkoutPage extends StatelessWidget {
                   child: LiftCardMinimal(
                       title: "Bench Press",
                       muscleTags: <String>["Chest", "Back"])),
-            ])));
+            ])),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: Padding(
+            padding: EdgeInsets.only(bottom: 10.0),
+            child: RoundedButton(
+                buttonText: "Start",
+                icon: FontAwesomeIcons.fireAlt,
+                onPressed: () => Navigator.pushNamed(context, "/home"))));
   }
 }
