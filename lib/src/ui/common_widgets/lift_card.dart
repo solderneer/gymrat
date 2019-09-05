@@ -92,7 +92,7 @@ class LiftCard extends StatelessWidget {
                                       .primaryTextTheme
                                       .subtitle
                                       .copyWith(fontWeight: FontWeight.w600)),
-                              TextSpan(text: " reps * "),
+                              TextSpan(text: " reps × "),
                               TextSpan(
                                   text: this.setCount,
                                   style: Theme.of(context)
