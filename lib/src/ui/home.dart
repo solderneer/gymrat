@@ -16,7 +16,20 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: <Widget>[
-        TopBar(title: "Overview"),
+        TopBar(title: "Overview", icons: <IconButton>[
+          IconButton(
+            icon: Icon(FontAwesomeIcons.dumbbell),
+            color: Colors.black,
+            tooltip: "My workouts",
+            onPressed: () => Navigator.pushNamed(context, "/workouts"),
+          ),
+          IconButton(
+            icon: Icon(FontAwesomeIcons.cog),
+            color: Colors.black,
+            tooltip: "Settings",
+            onPressed: () => {},
+          ),
+        ]),
         // Adding the overall status panel
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TopBar extends StatelessWidget {
   final String title;
+  final List<IconButton> icons;
 
-  TopBar({@required this.title});
+  TopBar({@required this.title, this.icons: const []});
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +22,12 @@ class TopBar extends StatelessWidget {
                 width: 1.0, color: Theme.of(context).primaryColorLight),
           ),
         ),
-        child: Row(children: <Widget>[
+        child: Row(
+            children: List.from([
           Text(title, style: Theme.of(context).textTheme.display4),
           Spacer(),
-          IconButton(
-            icon: Icon(FontAwesomeIcons.dumbbell),
-            color: Colors.black,
-            tooltip: "My workouts",
-            onPressed: () => Navigator.pushNamed(context, "/workouts"),
-          ),
-          IconButton(
-            icon: Icon(FontAwesomeIcons.cog),
-            color: Colors.black,
-            tooltip: "Settings",
-            onPressed: () => {},
-          ),
-        ]),
+        ])
+              ..addAll(icons)),
       ),
     );
   }

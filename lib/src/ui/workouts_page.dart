@@ -13,7 +13,20 @@ class _WorkoutsState extends State<WorkoutsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(children: <Widget>[
-      TopBar(title: "My Workouts"),
+      TopBar(title: "My Workouts", icons: <IconButton>[
+        IconButton(
+          icon: Icon(FontAwesomeIcons.plusCircle),
+          color: Colors.black,
+          tooltip: "My workouts",
+          onPressed: () => Navigator.pop(context, "/home"),
+        ),
+        IconButton(
+          icon: Icon(FontAwesomeIcons.home),
+          color: Colors.black,
+          tooltip: "Settings",
+          onPressed: () => Navigator.pop(context, "/home"),
+        ),
+      ]),
     ]));
   }
 }
