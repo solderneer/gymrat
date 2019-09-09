@@ -33,6 +33,6 @@ class LiftCardMinimal extends StatelessWidget {
         ]),
         decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
-            border: Border.all(width: 3.0, color: const Color(0xFFFFFFFF))));
+            border: Border.all(width: 2.0, color: const Color(0xFFFFFFFF))));
   }
 }
