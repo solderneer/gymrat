@@ -22,7 +22,10 @@ class RoundedButton extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(left: 5.0),
               child: Text(this.buttonText.toUpperCase(),
-                  style: Theme.of(context).primaryTextTheme.title)),
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .title
+                      .copyWith(color: Theme.of(context).primaryColor))),
         ]));
   }
 }

@@ -11,12 +11,17 @@ class MuscleTag extends StatelessWidget {
     return Container(
         padding: EdgeInsets.only(top: 2.5, bottom: 2.5, left: 5.0, right: 5.0),
         child: Text(this.muscle,
-            style: Theme.of(context)
-                .accentTextTheme
-                .subtitle
-                .copyWith(fontSize: 9.0)),
+            style: Theme.of(context).primaryTextTheme.body1.copyWith(
+                fontSize: 10.0,
+                color: (inverted)
+                    ? Theme.of(context).primaryColor
+                    : Colors.white)),
         decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            border: Border.all(width: 1.0, color: const Color(0xFFFFFFFF))));
+            color: Colors.transparent,
+            border: Border.all(
+                width: 1.0,
+                color: (inverted)
+                    ? Theme.of(context).primaryColor
+                    : Colors.white)));
   }
 }

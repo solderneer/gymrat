@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import "common_widgets/top_bar.dart";
-import "common_widgets/workout_card.dart";
+import "common_widgets/workout_card_minimal.dart";
 
 class WorkoutsPage extends StatefulWidget {
   @override
@@ -10,21 +10,18 @@ class WorkoutsPage extends StatefulWidget {
 }
 
 class _WorkoutsState extends State<WorkoutsPage> {
-  final List<WorkoutCard> cards = <WorkoutCard>[
-    WorkoutCard(
+  final List<WorkoutCardMinimal> cards = <WorkoutCardMinimal>[
+    WorkoutCardMinimal(
         title: "Push Split 1",
         duration: "45m 10s",
-        lastExerciseDate: "Monday, 18 Dec",
         muscleTags: ["Chest", "Shoulders", "Triceps"]),
-    WorkoutCard(
+    WorkoutCardMinimal(
         title: "Pull Split 1",
         duration: "40m 0s",
-        lastExerciseDate: "Tuesday, 19 Dec",
         muscleTags: ["Back", "Biceps"]),
-    WorkoutCard(
+    WorkoutCardMinimal(
         title: "Legs",
         duration: "1h 30min",
-        lastExerciseDate: "Wednesday, 20 Dec",
         muscleTags: ["Glutes", "Hamstrings", "Calves"])
   ];
 
@@ -48,11 +45,12 @@ class _WorkoutsState extends State<WorkoutsPage> {
       ]),
       Expanded(
           child: ListView.builder(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(
+                  top: 10.0, bottom: 4.0, left: 10.0, right: 10.0),
               itemCount: cards.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                    padding: EdgeInsets.all(10.0), child: cards[index]);
+                    padding: EdgeInsets.only(bottom: 8.0), child: cards[index]);
               })),
     ]));
   }

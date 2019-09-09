@@ -44,7 +44,8 @@ class LiftCard extends StatelessWidget {
                             children: muscleTags
                                 .map((muscle) => Padding(
                                     padding: EdgeInsets.only(right: 5.0),
-                                    child: MuscleTag(muscle: muscle)))
+                                    child: MuscleTag(
+                                        muscle: muscle, inverted: true)))
                                 .toList())),
                     Spacer()
                   ]),
