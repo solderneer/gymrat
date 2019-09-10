@@ -11,18 +11,22 @@ class WorkoutsPage extends StatefulWidget {
 
 class _WorkoutsState extends State<WorkoutsPage> {
   final List<WorkoutCardMinimal> cards = <WorkoutCardMinimal>[
+    WorkoutCardMinimal(title: "Rest Day :')", duration: "NA", muscleTags: []),
     WorkoutCardMinimal(
         title: "Push Split 1",
         duration: "45m 10s",
-        muscleTags: ["Chest", "Shoulders", "Triceps"]),
+        muscleTags: ["Chest", "Shoulders", "Triceps"],
+        inverted: true),
     WorkoutCardMinimal(
         title: "Pull Split 1",
         duration: "40m 0s",
-        muscleTags: ["Back", "Biceps"]),
+        muscleTags: ["Back", "Biceps"],
+        inverted: true),
     WorkoutCardMinimal(
         title: "Legs",
         duration: "1h 30min",
-        muscleTags: ["Glutes", "Hamstrings", "Calves"])
+        muscleTags: ["Glutes", "Hamstrings", "Calves"],
+        inverted: true)
   ];
 
   @override

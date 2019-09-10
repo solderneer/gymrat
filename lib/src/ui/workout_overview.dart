@@ -76,7 +76,8 @@ class WorkoutOverviewPage extends StatelessWidget {
                   RoundedButton(
                       buttonText: "",
                       icon: FontAwesomeIcons.userEdit,
-                      onPressed: () => Navigator.pushNamed(context, "/home")),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, "/workout_edit")),
                   RoundedButton(
                       buttonText: "Start",
                       icon: FontAwesomeIcons.fireAlt,
