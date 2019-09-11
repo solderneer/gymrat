@@ -3,12 +3,16 @@ import "package:flutter/material.dart";
 import "muscle_tag.dart";
 
 class LiftCardMinimal extends StatelessWidget {
+  final Key key;
   final String title;
   final List<String> muscleTags;
   final bool inverted;
 
   LiftCardMinimal(
-      {@required this.title, @required this.muscleTags, this.inverted: false});
+      {@required this.title,
+      @required this.muscleTags,
+      this.inverted: false,
+      this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class LiftCardMinimal extends StatelessWidget {
         child: Container(
             padding: EdgeInsets.only(
                 top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
-            child: Column(children: <Widget>[
+            child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
               Row(children: <Widget>[
                 Text(this.title,
                     style: Theme.of(context).accentTextTheme.title.copyWith(

@@ -1,27 +1,53 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
+import 'package:reorderables/reorderables.dart';
 
 import "common_widgets/lift_card_minimal.dart";
 import "common_widgets/rounded_button.dart";
+import "common_widgets/search_field.dart";
 
-class WorkoutEditPage extends StatelessWidget {
+class WorkoutEditPage extends StatefulWidget {
+  @override
+  _WorkoutEditPageState createState() => _WorkoutEditPageState();
+}
+
+class _WorkoutEditPageState extends State<WorkoutEditPage> {
   final String title = "Chest, Back, Biceps, Legs";
   final String restTime = "120";
   final int totalExerciseCount = 8;
   static final _formKey = GlobalKey<FormState>();
 
-  final List<LiftCardMinimal> cards = <LiftCardMinimal>[
+  List<LiftCardMinimal> cards = <LiftCardMinimal>[
     LiftCardMinimal(
-        title: "Bench Press", muscleTags: <String>["Chest", "Back"]),
+        title: "Bench Press",
+        muscleTags: <String>["Chest", "Back"],
+        key: ValueKey(1)),
     LiftCardMinimal(
-        title: "Squats", muscleTags: <String>["Hamstrings", "Glutes"]),
-    LiftCardMinimal(title: "Pullups", muscleTags: <String>["Biceps", "Back"]),
-    LiftCardMinimal(title: "Incline DB curl", muscleTags: <String>["Biceps"]),
+        title: "Squats",
+        muscleTags: <String>["Hamstrings", "Glutes"],
+        key: ValueKey(2)),
+    LiftCardMinimal(
+        title: "Pullups",
+        muscleTags: <String>["Biceps", "Back"],
+        key: ValueKey(3)),
+    LiftCardMinimal(
+        title: "Incline DB curl",
+        muscleTags: <String>["Biceps"],
+        key: ValueKey(4)),
   ];
+
+  void _onReorder(int oldIndex, int newIndex) {
+    setState(() {
+      Widget card = cards.removeAt(oldIndex);
+      cards.insert(newIndex, card);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final double statusbarHeight = MediaQuery.of(context).padding.top;
+    ScrollController _scrollController =
+        PrimaryScrollController.of(context) ?? ScrollController();
 
     return Scaffold(
         body: Material(
@@ -39,7 +65,6 @@ class WorkoutEditPage extends StatelessWidget {
                             style: Theme.of(context).accentTextTheme.display4,
                             minLines: 1,
                             maxLines: 2,
-                            autofocus: true,
                             cursorColor: Colors.white,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -69,7 +94,6 @@ class WorkoutEditPage extends StatelessWidget {
                                             .subtitle,
                                         maxLines: 1,
                                         maxLength: 3,
-                                        autofocus: true,
                                         cursorColor: Colors.white,
                                         textAlign: TextAlign.end,
                                         decoration: InputDecoration(
@@ -96,15 +120,22 @@ class WorkoutEditPage extends StatelessWidget {
                           margin: EdgeInsets.only(top: 0.0),
                           height: 1.0),
                       Expanded(
-                          child: ListView.builder(
-                              padding: const EdgeInsets.only(
-                                  top: 10.0, left: 20.0, right: 20.0),
-                              itemCount: cards.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                    padding: EdgeInsets.only(bottom: 8.0),
-                                    child: cards[index]);
-                              })),
+                          child: CustomScrollView(
+                              controller: _scrollController,
+                              slivers: <Widget>[
+                            ReorderableSliverList(
+                                delegate: ReorderableSliverChildBuilderDelegate(
+                                    (BuildContext context, int index) =>
+                                        Container(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 10.0,
+                                                vertical: 8.0),
+                                            child: cards[index]),
+                                    childCount: cards.length),
+                                onReorder: _onReorder),
+                          ])),
                     ])))),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: Padding(
@@ -139,6 +170,7 @@ class _BottomSheetFloatingButtonState extends State<BottomSheetFloatingButton> {
             icon: FontAwesomeIcons.plusCircle,
             onPressed: () {
               var bottomSheetController = showBottomSheet(
+                  backgroundColor: Colors.grey[100],
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25.0),
@@ -184,8 +216,7 @@ class BottomSheetLifts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 300,
-        color: Colors.grey[200],
+        height: 350,
         margin: const EdgeInsets.only(top: 5, left: 15, right: 15),
         child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -201,23 +232,5 @@ class BottomSheetLifts extends StatelessWidget {
                             child: cards[index]);
                       })),
             ]));
-  }
-}
-
-class SearchField extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 50,
-        alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-        decoration: BoxDecoration(
-            color: Colors.grey[300], borderRadius: BorderRadius.circular(10)),
-        child: TextField(
-          decoration: InputDecoration.collapsed(
-            hintText: "Search for a lift",
-          ),
-        ));
   }
 }
