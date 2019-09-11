@@ -62,11 +62,14 @@ class _WorkoutEditPageState extends State<WorkoutEditPage> {
                         padding: EdgeInsets.only(left: 20.0, right: 20.0),
                         child: TextFormField(
                             initialValue: this.title,
+                            textInputAction: TextInputAction.done,
                             style: Theme.of(context).accentTextTheme.display4,
                             minLines: 1,
                             maxLines: 2,
                             cursorColor: Colors.white,
                             decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Color(0xFF2A3B4C),
                                 border: InputBorder.none,
                                 hintText: "Workout name",
                                 hintStyle: Theme.of(context)
@@ -76,7 +79,7 @@ class _WorkoutEditPageState extends State<WorkoutEditPage> {
                       ),
                       Padding(
                           padding: EdgeInsets.only(
-                              top: 0.0, left: 20.0, right: 20.0),
+                              top: 10.0, left: 20.0, right: 20.0),
                           child: Row(children: <Widget>[
                             Text("${this.totalExerciseCount} total exercises",
                                 style:
@@ -86,9 +89,10 @@ class _WorkoutEditPageState extends State<WorkoutEditPage> {
                             Padding(
                                 padding: EdgeInsets.only(left: 5.0),
                                 child: SizedBox(
-                                    width: 45.0,
+                                    width: 65.0,
                                     child: TextFormField(
                                         initialValue: this.restTime,
+                                        textInputAction: TextInputAction.done,
                                         style: Theme.of(context)
                                             .accentTextTheme
                                             .subtitle,
@@ -97,6 +101,12 @@ class _WorkoutEditPageState extends State<WorkoutEditPage> {
                                         cursorColor: Colors.white,
                                         textAlign: TextAlign.end,
                                         decoration: InputDecoration(
+                                            contentPadding: EdgeInsets.only(
+                                              top: 3.0,
+                                              bottom: 3.0,
+                                            ),
+                                            filled: true,
+                                            fillColor: Color(0xFF2A3B4C),
                                             border: InputBorder.none,
                                             hintText: "120",
                                             suffixText: " s",
@@ -117,7 +127,7 @@ class _WorkoutEditPageState extends State<WorkoutEditPage> {
                           ])),
                       Container(
                           color: Color(0xFF4A5866),
-                          margin: EdgeInsets.only(top: 0.0),
+                          margin: EdgeInsets.only(top: 15.0),
                           height: 1.0),
                       Expanded(
                           child: Padding(
