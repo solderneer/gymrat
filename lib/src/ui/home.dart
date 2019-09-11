@@ -67,7 +67,10 @@ class _HomeState extends State<Home> {
                       title: "Chest, Back, Biceps, Legs",
                       duration: "15m 30s",
                       lastExerciseDate: "Mon, Dec 18th",
-                      muscleTags: <String>["Chest", "Back"]),
+                      muscleTags: <String>["Chest", "Back"],
+                      onTap: () {
+                        Navigator.pushNamed(context, "/workout_overview");
+                      }),
                 ])),
         // My lifts section for the pinned lifts
         Container(
@@ -90,12 +93,6 @@ class _HomeState extends State<Home> {
                             color: Color(0xFFB5B5B5),
                             tooltip: "Add new lift",
                             onPressed: () => {}),
-                        IconButton(
-                            icon: Icon(FontAwesomeIcons.ellipsisH, size: 15.0),
-                            color: Color(0xFFB5B5B5),
-                            tooltip: "Add new lift",
-                            onPressed: () => Navigator.pushNamed(
-                                context, "/workout_overview")),
                       ])),
                   LiftCard(
                       title: "Bench Press",
