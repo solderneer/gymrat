@@ -120,22 +120,40 @@ class _WorkoutEditPageState extends State<WorkoutEditPage> {
                           margin: EdgeInsets.only(top: 0.0),
                           height: 1.0),
                       Expanded(
-                          child: CustomScrollView(
-                              controller: _scrollController,
-                              slivers: <Widget>[
-                            ReorderableSliverList(
-                                delegate: ReorderableSliverChildBuilderDelegate(
-                                    (BuildContext context, int index) =>
-                                        Container(
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 10.0,
-                                                vertical: 8.0),
-                                            child: cards[index]),
-                                    childCount: cards.length),
-                                onReorder: _onReorder),
-                          ])),
+                          child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: 10.0, left: 20.0, right: 20.0),
+                              child: CustomScrollView(
+                                  controller: _scrollController,
+                                  slivers: <Widget>[
+                                    ReorderableSliverList(
+                                        delegate:
+                                            ReorderableSliverChildBuilderDelegate(
+                                                (BuildContext context,
+                                                        int index) =>
+                                                    Container(
+                                                        color: Theme.of(context)
+                                                            .primaryColor,
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                horizontal: 0.0,
+                                                                vertical: 4.0),
+                                                        child: Dismissible(
+                                                            key: Key(cards[
+                                                                    index]
+                                                                .title),
+                                                            onDismissed:
+                                                                (direction) {
+                                                              setState(() {
+                                                                cards.removeAt(
+                                                                    index);
+                                                              });
+                                                            },
+                                                            child:
+                                                                cards[index])),
+                                                childCount: cards.length),
+                                        onReorder: _onReorder),
+                                  ]))),
                     ])))),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: Padding(

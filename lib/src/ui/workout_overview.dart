@@ -34,7 +34,7 @@ class WorkoutOverviewPage extends StatelessWidget {
                           style: Theme.of(context).accentTextTheme.display4)),
                   Padding(
                       padding:
-                          EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+                          EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
                       child: Row(children: <Widget>[
                         Text("${this.totalExerciseCount} total exercises",
                             style: Theme.of(context).accentTextTheme.subtitle),
